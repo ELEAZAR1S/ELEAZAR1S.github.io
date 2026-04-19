@@ -1,80 +1,854 @@
-<!-- HERO / BIENVENIDA -->
-<section class="hero" style="text-align:center; padding-top:120px;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCOOPY ALL — Kits de Suplementación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --negro: #050505;
+      --rojo: #CC1818;
+      --rojo-oscuro: #8B0000;
+      --dorado: #D4A017;
+      --dorado-claro: #F0C040;
+      --dorado-oscuro: #8B6914;
+      --blanco: #F5F5F5;
+      --gris-oscuro: #111111;
+    }
 
-  <!-- LOGO -->
-  <img src="logo.png" alt="Scoopy All Logo" style="width:220px; margin-bottom:30px;">
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-  <h1 style="color:#C8A96E;">BIENVENIDO A SCOOPY ALL</h1>
+    body {
+      background-color: var(--negro);
+      color: var(--blanco);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
 
-  <p style="max-width:700px; margin:20px auto; font-size:18px; color:#EDE8DC;">
-    Ofrecemos kits de suplementación para principiantes y personas con buenas bases técnicas que buscan una experiencia guiada, segura y libre de tecnicismos.
-    Nuestra propuesta se diferencia mediante el uso de tarjetas de seguimiento y asesoría personalizada, funcionando como una hoja de ruta visual para evitar errores en el consumo diario.
-    Transformamos un proceso confuso en una solución práctica con resultados físicos reales.
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(5,5,5,0.97);
+      border-bottom: 2px solid var(--rojo);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--blanco);
+      text-decoration: none;
+      letter-spacing: 4px;
+    }
+
+    .nav-logo span { color: var(--rojo); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .nav-links li a {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(245,245,245,0.75);
+      text-decoration: none;
+      padding: 8px 18px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .nav-links li a:hover { color: var(--dorado); border-color: rgba(212,160,23,0.4); }
+
+    .nav-cta {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 10px 24px;
+      background: var(--rojo);
+      color: var(--blanco);
+      border: 1px solid var(--rojo);
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover { background: transparent; color: var(--rojo); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 72px;
+      background: var(--negro);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(204,24,24,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(212,160,23,0.08) 0%, transparent 60%);
+    }
+
+    .hero-logo-img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 0 30px rgba(212,160,23,0.4));
+      animation: logoGlow 3s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes logoGlow {
+      from { filter: drop-shadow(0 0 20px rgba(212,160,23,0.3)); }
+      to   { filter: drop-shadow(0 0 50px rgba(212,160,23,0.7)); }
+    }
+
+    .hero-bienvenida {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 6px;
+      color: var(--rojo);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 8vw, 110px);
+      letter-spacing: 8px;
+      color: var(--blanco);
+      line-height: 0.9;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 span { color: var(--rojo); }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 20px auto;
+      width: 300px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-divider::before, .hero-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--dorado-oscuro));
+    }
+
+    .hero-divider::after { background: linear-gradient(to left, transparent, var(--dorado-oscuro)); }
+    .hero-divider span { color: var(--dorado); font-size: 18px; }
+
+    .hero-propuesta {
+      max-width: 680px;
+      margin: 0 auto 36px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(245,245,245,0.7);
+      font-weight: 400;
+      padding: 0 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-propuesta strong { color: var(--dorado); font-weight: 700; }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+
+    .btn-rojo { background: var(--rojo); color: var(--blanco); border: 2px solid var(--rojo); }
+    .btn-rojo:hover { background: transparent; color: var(--rojo); }
+    .btn-dorado { background: var(--dorado); color: var(--negro); border: 2px solid var(--dorado); }
+    .btn-dorado:hover { background: transparent; color: var(--dorado); }
+    .btn-ghost { background: transparent; color: var(--blanco); border: 2px solid rgba(245,245,245,0.4); }
+    .btn-ghost:hover { border-color: var(--dorado); color: var(--dorado); }
+
+    /* ── SECCIÓN ENCUESTA ── */
+    .encuesta-section {
+      background: linear-gradient(135deg, #0a0000 0%, #110500 50%, #0a0000 100%);
+      border-top: 3px solid var(--rojo);
+      border-bottom: 3px solid var(--rojo);
+      padding: 70px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .encuesta-section::before {
+      content: '?';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 400px;
+      color: rgba(204,24,24,0.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .encuesta-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: var(--dorado);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .encuesta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: 4px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .encuesta-title span { color: var(--rojo); }
+
+    .encuesta-desc {
+      font-size: 15px;
+      color: rgba(245,245,245,0.6);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .encuesta-btn {
+      display: inline-block;
+      background: var(--rojo);
+      color: var(--blanco);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      padding: 18px 52px;
+      border: 2px solid var(--rojo);
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .encuesta-btn:hover { background: transparent; color: var(--rojo); }
+
+    /* ── SECCIONES GENERALES ── */
+    section { padding: 80px 60px; }
+
+    .section-header { text-align: center; margin-bottom: 60px; }
+
+    .section-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      color: var(--dorado-oscuro);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 4vw, 64px);
+      letter-spacing: 5px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .section-title span { color: var(--rojo); }
+
+    .section-line {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .section-line::before, .section-line::after {
+      content: '';
+      width: 80px;
+      height: 2px;
+      background: var(--rojo);
+    }
+
+    .section-line span { color: var(--dorado); font-size: 16px; }
+
+    .bg-dark2 { background: linear-gradient(180deg, #050505 0%, #0d0300 50%, #050505 100%); }
+
+    /* ── KITS GRID ── */
+    .kits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .kit-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: #0a0500;
+      border: 1px solid rgba(212,160,23,0.1);
+      transition: border-color 0.4s;
+    }
+
+    .kit-card:hover { border-color: rgba(212,160,23,0.5); }
+
+    .kit-card-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(0.45) contrast(1.1);
+      transition: filter 0.5s, transform 0.5s;
+    }
+
+    .kit-card:hover .kit-card-img {
+      filter: brightness(0.55) contrast(1.1);
+      transform: scale(1.04);
+    }
+
+    /* Placeholder cuando no hay imagen */
+    .kit-card-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #110800, #060300);
+    }
+
+    .kit-card-placeholder-icon {
+      font-size: 100px;
+      opacity: 0.08;
+      filter: grayscale(1);
+    }
+
+    .kit-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.4) 50%, transparent 100%);
+    }
+
+    .kit-card-level {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: var(--rojo);
+      color: var(--blanco);
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      padding: 5px 14px;
+      text-transform: uppercase;
+    }
+
+    .kit-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 32px;
+    }
+
+    .kit-card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 3vw, 46px);
+      letter-spacing: 4px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .kit-card-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--dorado);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .kit-card-desc {
+      font-size: 13px;
+      color: rgba(245,245,245,0.6);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .kit-card-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border: 2px solid var(--dorado);
+      color: var(--dorado);
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .kit-card-btn:hover { background: var(--dorado); color: var(--negro); }
+
+    /* ── DOMICILIO ── */
+    .domicilio-section {
+      background: var(--negro);
+      border-top: 2px solid var(--dorado-oscuro);
+    }
+
+    .domicilio-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .domicilio-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 4vw, 62px);
+      letter-spacing: 4px;
+      color: var(--blanco);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .domicilio-text h2 span { color: var(--rojo); }
+
+    .domicilio-text p {
+      font-size: 14px;
+      color: rgba(245,245,245,0.65);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .domicilio-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .dom-feature {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid rgba(212,160,23,0.2);
+      background: rgba(212,160,23,0.03);
+      transition: border-color 0.3s;
+    }
+
+    .dom-feature:hover { border-color: rgba(212,160,23,0.5); }
+
+    .dom-icon {
+      font-size: 26px;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .dom-feature-text strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--dorado);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .dom-feature-text span {
+      font-size: 12px;
+      color: rgba(245,245,245,0.5);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #030303;
+      border-top: 3px solid var(--rojo);
+      padding: 60px 60px 30px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo-txt {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 5px;
+      color: var(--blanco);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo-txt span { color: var(--rojo); }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(245,245,245,0.45);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      color: var(--dorado);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(212,160,23,0.2);
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(245,245,245,0.5);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover { color: var(--dorado); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245,245,245,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom span {
+      font-size: 12px;
+      color: rgba(245,245,245,0.3);
+      letter-spacing: 1px;
+    }
+
+    .footer-bottom .footer-tagline {
+      color: var(--rojo);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      letter-spacing: 3px;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* ── ANIMACIONES ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in { animation: fadeInUp 0.8s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* ── BARRA ROJA DECORATIVA ── */
+    .red-stripe {
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--rojo-oscuro), var(--rojo), var(--rojo-oscuro), transparent);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 24px; }
+      section { padding: 60px 24px; }
+      .kits-grid { grid-template-columns: 1fr; }
+      .domicilio-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">SCOOPY <span>ALL</span></a>
+    <ul class="nav-links">
+      <li><a href="#kits">Kits</a></li>
+      <li><a href="#encuesta">¿Cuál me toca?</a></li>
+      <li><a href="#domicilio">Domicilio</a></li>
+    </ul>
+    <a href="#encuesta" class="nav-cta">Descubre tu kit</a>
+  </div>
+  <div class="red-stripe"></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <!-- Logo de la tienda -->
+  <img 
+    src="/mnt/user-data/uploads/WhatsApp_Image_2026-04-16_at_7_36_35_PM.jpeg" 
+    alt="Scoopy All Logo" 
+    class="hero-logo-img fade-in"
+  />
+
+  <p class="hero-bienvenida fade-in delay-1">¡Bienvenido a</p>
+  <h1 class="fade-in delay-2">SCOOPY <span>ALL</span></h1>
+
+  <div class="hero-divider fade-in delay-2">
+    <span>⚡</span>
+  </div>
+
+  <p class="hero-propuesta fade-in delay-3">
+    Ofrecemos <strong>kits de suplementación</strong> para principiantes y personas con buenas bases técnicas que buscan una experiencia guiada, segura y libre de tecnicismos. Nos diferenciamos mediante el uso de <strong>tarjetas de seguimiento y asesoría personalizada</strong>, que funcionan como una hoja de ruta visual para evitar errores en el consumo diario. Transformamos un proceso confuso en una <strong>solución práctica con resultados físicos reales</strong>.
   </p>
 
+  <div class="hero-btns fade-in delay-4">
+    <a href="#kits" class="btn btn-rojo">Ver Kits</a>
+    <a href="#encuesta" class="btn btn-dorado">¿Cuál kit necesito?</a>
+    <a href="#domicilio" class="btn btn-ghost">Domicilio 🚀</a>
+  </div>
 </section>
 
+<div class="red-stripe"></div>
 
-<!-- CTA ENCUESTA -->
-<section style="text-align:center; padding:60px;">
-  <h2 style="color:#C8A96E;">¿QUIERES SABER QUÉ KIT NECESITAS?</h2>
-  <a href="https://forms.gle/TU_LINK_AQUI" target="_blank"
-     style="display:inline-block; margin-top:20px; padding:15px 40px;
-     border:1px solid #C8A96E; color:#C8A96E; text-decoration:none;">
-     HACER TEST
+<!-- ENCUESTA -->
+<div class="encuesta-section" id="encuesta">
+  <p class="encuesta-eyebrow">Test personalizado</p>
+  <h2 class="encuesta-title">¿QUIERES SABER QUÉ<br><span>KIT NECESITAS?</span></h2>
+  <p class="encuesta-desc">Responde algunas preguntas rápidas y te diremos exactamente qué kit está hecho para ti y tu nivel de entrenamiento.</p>
+  <a href="TU_LINK_DE_GOOGLE_FORMS_AQUI" target="_blank" class="encuesta-btn">
+    🏋️ HACER LA ENCUESTA AHORA
   </a>
-</section>
+</div>
 
+<div class="red-stripe"></div>
 
 <!-- KITS -->
-<section id="kits" style="padding:80px;">
+<section class="bg-dark2" id="kits">
+  <div class="section-header">
+    <span class="section-eyebrow">Elige tu nivel</span>
+    <h2 class="section-title">NUESTROS <span>KITS</span></h2>
+    <div class="section-line"><span>💪</span></div>
+  </div>
 
-  <h2 style="text-align:center; color:#C8A96E; margin-bottom:60px;">
-    NUESTROS KITS
-  </h2>
+  <div class="kits-grid">
 
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
-
-    <!-- PRINCIPIANTES -->
-    <div>
-      <img src="principiante.png" style="width:100%;">
-      <h3>KIT PARA PRINCIPIANTES</h3>
-      <p>Ideal para iniciar correctamente en el mundo de la suplementación.</p>
+    <!-- KIT 1: PRINCIPIANTES -->
+    <div class="kit-card">
+      <img 
+        src="/mnt/user-data/uploads/ChatGPT_Image_19_abr_2026__17_52_35.png" 
+        alt="Kit Principiantes" 
+        class="kit-card-img"
+      />
+      <div class="kit-card-overlay"></div>
+      <div class="kit-card-level">Nivel 1</div>
+      <div class="kit-card-content">
+        <div class="kit-card-name">Kit para<br>Principiantes</div>
+        <div class="kit-card-subtitle">Tu primer paso al mundo del gym</div>
+        <p class="kit-card-desc">Arrancas desde cero y necesitas una base sólida. Este kit te guía con suplementos esenciales para que empieces con el pie derecho, sin complicaciones.</p>
+        <a href="#encuesta" class="kit-card-btn">Ver detalles →</a>
+      </div>
     </div>
 
-    <!-- NOVATOS -->
-    <div>
-      <img src="novatos.png" style="width:100%;">
-      <h3>KIT PARA NOVATOS</h3>
-      <p>Para quienes ya tienen una base y buscan mejorar resultados.</p>
+    <!-- KIT 2: NOVATOS -->
+    <div class="kit-card">
+      <div class="kit-card-placeholder">
+        <div class="kit-card-placeholder-icon">🥊</div>
+      </div>
+      <div class="kit-card-overlay"></div>
+      <div class="kit-card-level">Nivel 2</div>
+      <div class="kit-card-content">
+        <div class="kit-card-name">Kit para<br>Novatos</div>
+        <div class="kit-card-subtitle">Ya tienes algo de base — súbele</div>
+        <p class="kit-card-desc">Llevas un tiempo en el gym y quieres llevar tus resultados al siguiente nivel. Un kit diseñado para potenciar tu progreso con inteligencia.</p>
+        <a href="#encuesta" class="kit-card-btn">Ver detalles →</a>
+      </div>
     </div>
 
-    <!-- FUERTES -->
-    <div>
-      <img src="fuertes.png" style="width:100%;">
-      <h3>KIT PARA FUERTES</h3>
-      <p>Optimización avanzada para alto rendimiento físico.</p>
+    <!-- KIT 3: FUERTES -->
+    <div class="kit-card">
+      <div class="kit-card-placeholder">
+        <div class="kit-card-placeholder-icon">🔥</div>
+      </div>
+      <div class="kit-card-overlay"></div>
+      <div class="kit-card-level">Nivel 3</div>
+      <div class="kit-card-content">
+        <div class="kit-card-name">Kit para<br>Fuertes</div>
+        <div class="kit-card-subtitle">Para los que ya saben de qué va esto</div>
+        <p class="kit-card-desc">Tu cuerpo ya responde al entrenamiento. Ahora necesitas suplementación avanzada que esté a la altura de tu disciplina y tus metas serias.</p>
+        <a href="#encuesta" class="kit-card-btn">Ver detalles →</a>
+      </div>
     </div>
 
-    <!-- BIRRIOSOS -->
-    <div style="background:#111; display:flex; align-items:center; justify-content:center;">
-      <div>
-        <h3>KIT BIRRIOSOS DEL ENTRENO</h3>
-        <p style="text-align:center;">Nivel extremo. Solo para disciplina total.</p>
+    <!-- KIT 4: BIRRIOSOS DEL ENTRENO -->
+    <div class="kit-card" style="border-color: rgba(204,24,24,0.3);">
+      <div class="kit-card-placeholder">
+        <div class="kit-card-placeholder-icon">⚡</div>
+      </div>
+      <div class="kit-card-overlay" style="background: linear-gradient(to top, rgba(100,0,0,0.9) 0%, rgba(5,5,5,0.4) 50%, transparent 100%);"></div>
+      <div class="kit-card-level" style="background: var(--dorado); color: var(--negro);">Nivel élite</div>
+      <div class="kit-card-content">
+        <div class="kit-card-name" style="color: var(--dorado);">Kit para Birriosos<br>del Entreno</div>
+        <div class="kit-card-subtitle" style="color: var(--rojo);">Solo para los que no conocen el límite</div>
+        <p class="kit-card-desc">Esto no es para cualquiera. Si vives el gym, piensas en el gym y el gym es tu estilo de vida, este kit fue hecho para tu nivel brutal.</p>
+        <a href="#encuesta" class="kit-card-btn" style="border-color: var(--rojo); color: var(--rojo);">Ver detalles →</a>
       </div>
     </div>
 
   </div>
-
 </section>
 
+<div class="red-stripe"></div>
 
-<!-- PRODUCTOS A DOMICILIO -->
-<section style="text-align:center; padding:80px; background:#0a0a0a;">
-  <h2 style="color:#C8A96E;">PRODUCTOS A DOMICILIO</h2>
-  <p style="max-width:600px; margin:20px auto; color:#ccc;">
-    Recibe tus kits directamente en tu casa de forma rápida y segura.
-    SCOOPY ALL se encarga de todo para que solo te enfoques en entrenar.
-  </p>
+<!-- DOMICILIO -->
+<section class="domicilio-section" id="domicilio">
+  <div class="domicilio-inner">
+    <div class="domicilio-text">
+      <h2>PRODUCTOS<br>A <span>DOMICILIO</span></h2>
+      <p>¿No tienes tiempo de salir? No hay problema. Llevamos tu kit directamente a tu puerta para que no pierdas ni un día de progreso.</p>
+      <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="btn btn-rojo">Pedir por WhatsApp 📱</a>
+    </div>
+
+    <div class="domicilio-features">
+      <div class="dom-feature">
+        <div class="dom-icon">📦</div>
+        <div class="dom-feature-text">
+          <strong>Empaque seguro</strong>
+          <span>Tus suplementos llegan perfectos y protegidos</span>
+        </div>
+      </div>
+      <div class="dom-feature">
+        <div class="dom-icon">⚡</div>
+        <div class="dom-feature-text">
+          <strong>Entrega rápida</strong>
+          <span>Lo más rápido posible directo a donde estés</span>
+        </div>
+      </div>
+      <div class="dom-feature">
+        <div class="dom-icon">🧾</div>
+        <div class="dom-feature-text">
+          <strong>Tarjeta de seguimiento</strong>
+          <span>Incluida en cada kit para guiarte día a día</span>
+        </div>
+      </div>
+      <div class="dom-feature">
+        <div class="dom-icon">💬</div>
+        <div class="dom-feature-text">
+          <strong>Asesoría personalizada</strong>
+          <span>Te acompañamos antes y después de tu compra</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo-txt">SCOOPY <span>ALL</span></span>
+      <p>Kits de suplementación deportiva con asesoría personalizada y tarjetas de seguimiento. Tu nutrición deportiva integral, sin complicaciones.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="#kits">Kit Principiantes</a></li>
+        <li><a href="#kits">Kit Novatos</a></li>
+        <li><a href="#kits">Kit Fuertes</a></li>
+        <li><a href="#kits">Kit Birriosos</a></li>
+        <li><a href="#domicilio">Domicilio</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">📱 WhatsApp</a></li>
+        <li><a href="#">📸 Instagram</a></li>
+        <li><a href="#">📘 Facebook</a></li>
+        <li><a href="#encuesta">📋 Test de Kit</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Scoopy All — Todos los derechos reservados</span>
+    <span class="footer-tagline">⚡ Suplementación que sí funciona ⚡</span>
+  </div>
+</footer>
+
+</body>
+</html>
