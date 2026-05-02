@@ -242,66 +242,6 @@
     .btn-ghost { background: transparent; color: var(--blanco); border: 2px solid rgba(245,245,245,0.4); }
     .btn-ghost:hover { border-color: var(--dorado); color: var(--dorado); }
 
-    .encuesta-section::before {
-      content: '?';
-      position: absolute;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 400px;
-      color: rgba(204,24,24,0.04);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .encuesta-eyebrow {
-      font-family: 'Oswald', sans-serif;
-      font-size: 12px;
-      letter-spacing: 5px;
-      color: var(--dorado);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .encuesta-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 5vw, 72px);
-      letter-spacing: 4px;
-      color: var(--blanco);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      line-height: 1;
-    }
-
-    .encuesta-title span { color: var(--rojo); }
-
-    .encuesta-desc {
-      font-size: 15px;
-      color: rgba(245,245,245,0.6);
-      margin-bottom: 32px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .encuesta-btn {
-      display: inline-block;
-      background: var(--rojo);
-      color: var(--blanco);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 4px;
-      padding: 18px 52px;
-      border: 2px solid var(--rojo);
-      text-decoration: none;
-      transition: all 0.3s;
-      position: relative;
-      z-index: 2;
-    }
-
-    .encuesta-btn:hover { background: transparent; color: var(--rojo); }
-
     /* ── SECCIONES GENERALES ── */
     section { padding: 80px 60px; }
 
@@ -346,7 +286,9 @@
     .section-line span { color: var(--dorado); font-size: 16px; }
 
     .bg-dark2 { background: linear-gradient(180deg, #050505 0%, #0d0300 50%, #050505 100%); }
-
+  </style>
+  
+</head>
     /* ── KITS GRID ── */
     .kits-grid {
       display: grid;
